@@ -2,12 +2,12 @@
 import React, {useState, useEffect} from 'react';
 import {NativeModules} from 'react-native';
 
-export default () => {
+export default function useClipboard() {
   const [contents, setContents] = useState('');
 
   useEffect(() => {
     getClipboardContents();
-  });
+  }, []);
 
   const getClipboardContents = async () => {
     const content = await NativeModules.Clipboard.getString();
